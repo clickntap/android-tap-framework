@@ -1,27 +1,42 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.clickntap'
 
 android {
-    compileSdkVersion 26
+
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
 
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 26
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
+    }
+
+    signingConfigs {
+        releaseConfig {
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.releaseConfig
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+          minifyEnabled false
+          debuggable true
         }
     }
 
 }
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-   implementation 'com.android.support:appcompat-v7:26.1.0'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:25.3.1'
 }

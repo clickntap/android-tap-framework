@@ -58,7 +58,6 @@ public class TapWebView extends WebView {
         this.getSettings().setMediaPlaybackRequiresUserGesture(false);
         this.setWebViewClient(new WebViewClient(){
             public void onPageFinished(final android.webkit.WebView view, String url) {
-                final AppActivity activity = (AppActivity) view.getContext();
                 if(delegate != null) {
                     delegate.onLoad();
                 }
